@@ -1,8 +1,21 @@
 import random
 import time
+print("Bem-vindo ao cassino virtual!")
+print()
+def aposta():
+    print("Ao apostar uma quantia e ganhar a aposta, receba o TRIPLO")
+    aposta = float(input("Deposite aqui seu dinheiro: R$"))
+    resultado = aposta * 3
+    confirmar = float(input(f"Você deseja confirmar a aposta? (retorno de R$ {resultado:.2f})\n [1] Sim \n [2] Não \n - "))
+    if confirmar == 1.0:
+        sorteio()
+    elif confirmar ==2.0:
+        print("Ok, aposta cancelada!")
+    else:
+        print("Erro! Aposta cancelada.")
 
 def sorteio():
-    elementos = "🍇" , "🍑" , "🍉", "🍈"
+    elementos = "🍇" , "🍑" , "🍉"
     print()
     print("🎰 GIRANDO A ROLETA... ")
     print()
@@ -23,13 +36,13 @@ def sorteio():
         print()
         print("Não foi dessa vez! Tente novamente!")
 
-print("VEM QUE TA PAGANDO! ao apostar uma quantia e ganhar a aposta, receba o TRIPLO")
-aposta = float(input("Deposite aqui seu dinheiro: R$"))
-resultado = aposta * 3
-confirmar = float(input(f"Você deseja confirmar a aposta? (retorno de R$ {resultado:.2f})\n [1] Sim \n [2] Não \n - "))
-if confirmar == 1.0:
-    sorteio()
-elif confirmar ==2.0:
-    print("Ok, aposta cancelada!")
-else:
-    print("Erro! Aposta cancelada.")
+aposta()
+while True:
+    continuar=float(input("Quer fazer outra aposta?\n [1] Sim\n [2] Não \n - "))
+    if continuar==1.0:
+        aposta()
+    else:
+        break
+
+
+print("Obrigado por jogar, volte sempre!")
