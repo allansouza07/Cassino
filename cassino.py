@@ -43,6 +43,4 @@ while True:
         aposta()
     else:
         break
-
-
 print("Obrigado por jogar, volte sempre!")
