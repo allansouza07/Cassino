@@ -10,4 +10,5 @@ Sistema de cassino virtual que lê o dinheiro depositado pelo cliente, cria uma 
 - Comunicação com o cliente de acordo com seu resultado
 - Convite a participar de outra aposta
 
+#Verificação de usuário com login e cadastro
 
