@@ -78,21 +78,11 @@ elif cadastro == 2:
     login()
 
 
-print()
-def aposta():
-    print("Ao apostar uma quantia e ganhar a aposta, receba o TRIPLO")
-    aposta = float(input(f"Deposite aqui seu dinheiro : R$"))
-    resultado = aposta * 3
-    confirmar = float(input(f"Você deseja confirmar a aposta? (retorno de R$ {resultado:.2f})\n [1] Sim \n [2] Não \n - "))
-    if confirmar == 1.0:
-        sorteio()
-    elif confirmar ==2.0:
-        print("Ok, aposta cancelada!")
-    else:
-        print("Erro! Aposta cancelada.")
 
 def sorteio():
-    elementos = "🍇" , "🍑" , "🍉"
+    elementos = "🍇" , "🍑" , "🍉","🍍","🍒"
+    elementos_especiais = "🍍"
+    elemento_coringa = "🍒"
     print()
     print("🎰 GIRANDO A ROLETA... ")
     print()
@@ -103,21 +93,78 @@ def sorteio():
         print(f"\r{elemento_um} | {elemento_dois} | {elemento_tres}", end='' , flush=True)
         time.sleep(0.1)
 
-    if elemento_um == elemento_dois == elemento_tres:
-        print()
-        print("Parabéns! Você ganhou a aposta!")
-    elif elemento_um == elemento_dois or elemento_um == elemento_tres or elemento_dois == elemento_tres:
-        print()
-        print("Foi por quase! Tente novamente!")
-    else:
-        print()
-        print("Não foi dessa vez! Tente novamente!")
+    while True:
+        if elemento_um == "🍍" and elemento_dois == "🍍" and elemento_tres =="🍍":
+            print()
+            print("Parabéns, você ganhou a aposta triplicada!")
+            print(f"Em breve, R$ {valor_aposta * 3} serão depositados em sua conta!")
+            break
+        elif elemento_um == elemento_dois == elemento_tres:
+            print()
+            print("Parabéns! Você ganhou a aposta!")
+            print(f"Em breve, R$ {valor_aposta * 2} serão depositados em sua conta!")
+            break
 
-aposta()
-while True:
-    continuar=float(input("Quer fazer outra aposta?\n [1] Sim\n [2] Não \n - "))
-    if continuar==1.0:
-        aposta()
+        elif elemento_um == elemento_dois and elemento_tres=="🍒" or elemento_um =="🍒" and elemento_dois == elemento_tres or elemento_um == "🍒" and elemento_dois == elemento_tres:
+            print()
+            print("Parabéns! Você ganhou a aposta!")
+            print(f"Em breve, R$ {valor_aposta * 2} serão depositados em sua conta!")
+            break
+        elif elemento_um =="🍒" and elemento_dois=="🍒" or elemento_dois == "🍒" and elemento_tres=="🍒" or elemento_tres == "🍒" and elemento_um=="🍒" or elemento_um == "🍒" and elemento_dois =="🍒" and elemento_tres=="🍒":
+            print()
+            print("Parabéns! Você ganhou a aposta!")
+            print(f"Em breve, R$ {valor_aposta * 2} serão depositados em sua conta!")
+            break
+
+        elif elemento_um == elemento_dois or elemento_um == elemento_tres or elemento_dois == elemento_tres:
+            print()
+            print("Foi por quase! Tente novamente!")
+            break
+        else:
+            print()
+            print("Não foi dessa vez! Tente novamente!")
+            break
+
+
+print()
+def aposta():
+    print("Ao apostar uma quantia e ganhar a aposta, tenha a chance de receber o TRIPLO do que apostou!")
+    print()
+    print("-------------------- ODDS --------------------")
+    print("Frutas com valores comuns: 🍇, 🍑, 🍉  ")
+    print("Fruta com valor especial: 🍍")
+    print("Fruta coringa: 🍒")
+    print()
+    apostaa = float(input(f"Deposite aqui seu dinheiro : R$"))
+    resultado = apostaa * 2
+    resultado_triplo = apostaa * 3
+    confirmar = float(input(f"Você deseja confirmar a aposta? (retorno de R$ {resultado:.2f} em caso de resultado normal e R$ {resultado_triplo:.2f} em caso de resultado especial)\n [1] Sim \n [2] Não \n - "))
+    if confirmar == 1.0:
+        sorteio()
+    elif confirmar ==2.0:
+        print("Ok, aposta cancelada!")
     else:
-        break
+        print("Erro! Aposta cancelada.")
+    
+    return apostaa
+
+
+valor_aposta= aposta()
+print(valor_aposta)
+
+
+
+
+
+def continuar():
+    valor_aposta = None
+    while True:
+        continuar=float(input("Quer fazer outra aposta?\n [1] Sim\n [2] Não \n - "))
+        if continuar==1.0:
+            valor_aposta = aposta()
+            return valor_aposta
+        else:
+            break
+continuar()
+
 print("Obrigado por jogar, volte sempre!")
