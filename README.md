@@ -10,4 +10,7 @@ Sistema de cassino virtual que lê o dinheiro depositado pelo cliente, cria uma 
 - Comunicação com o cliente de acordo com seu resultado
 - Convite a participar de outra aposta
 
+# Verificação de usuário com login e cadastro
+## O sistema, além de um login direto, possuí um sistema de registro de novos usuários, possibilitando o usuário a cadastrar nome e senha, além disso, o sistema pergunta a sua idade, e para o programa caso ela seja menor que 18. Todos os dados fornecidos pelo usuário é direcionado a um pequeno banco de dados, ficando armazenados.
+## Após a finalização de cadastro, o usuário é redirecionado à tela de login, que lê o nome e senha digitados pelo usuário e vai até o banco de dados do programa para verificar se os dados estão corretos. Caso estejam, o acesso ao programa finalmente é liberado, caso contrário, o programa dá a opção de digitar os dados novamente, ou realizar um novo cadastro.
 
